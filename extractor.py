@@ -43,13 +43,13 @@ def extract_information(text: str) -> dict:
         "Term Reason": r"(?:Term Reason|Reason for Termination|Reason)(is)?:?\s*([^\n]+)",
         # "Provider Name": r"(?:Provider|Physician):?\s*([^/\n]+)",
         "Provider NPI": r"(?:NPI|Provider NPI|NPI#|NPI Number):?\s*(\d{10})",
-        "Provider Specialty": r"NPI\s*\d{10}\s*([A-Za-z\s]+?)\s*\d{2}[A-Z0-9]",
+        "Provider Specialty": r"NPI:\s*\d{10}\s*([A-Za-z\s]+?)\s*\d{2}[A-Z0-9]",
         "State License": r"(?:License|State License):?\s*([A-Za-z0-9]+)",
         "TIN": r"(?:Tax ID|TIN|Taxation Id|Tax ID Number):?\s*([\d-]+)",
         "Group NPI": r"(?:Group NPI|Organization NPI|Org NPI):?\s*(\d{10})",
         "Complete Address": r"(?:Address|Location|Practice Address):?\s*([^\n]+)",
-        "Phone Number": r"(?:Phone|Tel|Contact|Phone Number):?\s*((?:\(\d{3}\)|\d{3})?[\s-]?\d{3}[\s-]?\d{4})",
-        "Fax Number": r"(?:Fax|Fax Number):?\s*((?:\(\d{3}\)|\d{3})?[\s-]?\d{3}[\s-]?\d{4})",
+        "Phone Number": r"(?:Phone|Tel|Contact|Phone Number):?\s*((?:\+?\d{1,3}[\s.-]?)?(?:\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4})",
+        "Fax Number": r"(?:Fax|Fax Number):?\s*((?:\+?\d{1,3}[\s.-]?)?(?:\(?\d{2,4}\)?[\s.-]?)?\d{3,4}[\s.-]?\d{4})",
     }
 
     for key, pattern in patterns.items():
@@ -65,9 +65,9 @@ def extract_information(text: str) -> dict:
     if "Provider Name" not in data or "Organization Name" not in data:
         doc = nlp(text)
         for ent in doc.ents:
-            if ent.label_ == "PERSON" and "Provider Name" not in data:
+            if "Provider Name" not in data and ent.label_ == "PERSON" and "Provider Name" not in data:
                 data["Provider Name"] = ent.text
-            elif ent.label_ == "ORG" and "Organization Name" not in data:
+            elif "Organization Name" not in data and ent.label_ == "ORG" and "Organization Name" not in data:
                 if "Medical Group" in ent.text:
                     data["Organization Name"] = ent.text
 
@@ -127,8 +127,8 @@ def extract_information(text: str) -> dict:
             lob = lob_match.group(1).strip()
             if "commercial" in lob.lower():
                 data["Line Of Business"].append("Commercial")
-            elif "medicaid" in lob.lower():
-                data["Line Of Business"].append("Medicaid")
+            elif "medicaid" in lob.lower() or "medical" in lob.lower():
+                data["Line Of Business"].append("Medical")
             elif "medicare" in lob.lower():
                 data["Line Of Business"].append("Medicare")
             # data["Line Of Business"].append(lob)

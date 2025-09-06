@@ -7,7 +7,6 @@ from extractor import extract_information
 from preprocessor import preprocess_text
 from parser import parse_eml
 
-
 def _normalize_numeric_id(value: Any) -> str:
     """Strips non-numeric characters."""
     if isinstance(value, str):
@@ -55,12 +54,7 @@ def normalize_data(raw_data: Dict[str, Any]) -> Dict[str, str]:
         elif key in ["Line Of Business", "PPG ID"]:
             # Convert lists to a comma-separated string
             if isinstance(value, list):
-                # Normalize each PPG ID in the list before joining
-                if key == "PPG ID":
-                    normalized_items = [_normalize_numeric_id(item) for item in value]
-                    normalized_record[key] = ", ".join(normalized_items)
-                else:
-                    normalized_record[key] = ", ".join(map(str, value))
+                normalized_record[key] = ", ".join(map(str, value))
             else:
                 normalized_record[key] = str(value)
         else:
@@ -72,9 +66,14 @@ def normalize_data(raw_data: Dict[str, Any]) -> Dict[str, str]:
         if value is None or value == "":
             normalized_record[key] = NOT_FOUND
 
+    if "Line Of Business" in normalized_record:
+        normalized_record["Line Of Business (Medicare/Commercial/Medical)"] = normalized_record.pop("Line Of Business")
+    if "Transaction Type" in normalized_record:
+        normalized_record["Transaction Type (Add/Update/Term)"] = normalized_record.pop("Transaction Type")
+
     # Desired key order
     ordered_keys = [
-        "Transaction Type",
+        "Transaction Type (Add/Update/Term)",
         "Transaction Attribute",
         "Effective Date",
         "Term Date",
@@ -90,13 +89,11 @@ def normalize_data(raw_data: Dict[str, Any]) -> Dict[str, str]:
         "Phone Number",
         "Fax Number",
         "PPG ID",
-        "Line Of Business",
+        "Line Of Business (Medicare/Commercial/Medical)",
     ]
 
     # Build ordered dict
-    ordered_record = {
-        key: normalized_record.get(key, NOT_FOUND) for key in ordered_keys
-    }
+    ordered_record = {key: normalized_record.get(key, NOT_FOUND) for key in ordered_keys}
 
     return ordered_record
 
@@ -104,7 +101,9 @@ def normalize_data(raw_data: Dict[str, Any]) -> Dict[str, str]:
 if __name__ == "__main__":
     # This section demonstrates the module's effect
     # Set up the command-line argument parser to test this module
-    parser = argparse.ArgumentParser(description="Module 4: Data Normalizer.")
+    parser = argparse.ArgumentParser(
+        description="Module 4: Data Normalizer."
+    )
     parser.add_argument(
         "--email_file",
         type=str,
@@ -128,7 +127,6 @@ if __name__ == "__main__":
         print(clean_text)
     else:
         print("No text was produced after cleaning.")
-    print("\n--- End of a process ---")
 
     # 3. Call Module 3 for information extraction
     raw_extracted_data = extract_information(clean_text)
