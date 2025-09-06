@@ -20,7 +20,7 @@ except OSError:
     )
 
 
-def extract_information_v2(text: str) -> dict:
+def extract_information(text: str) -> dict:
     """
     Extracts provider information using an improved hybrid and rule-based approach.
 
@@ -41,7 +41,7 @@ def extract_information_v2(text: str) -> dict:
     patterns = {
         "Date": r"(?:Effective|Effective Date|Date):?\s*(\d{1,2}/\d{1,2}/\d{4})",
         "Term Reason": r"(?:Term Reason|Reason for Termination|Reason)(is)?:?\s*([^\n]+)",
-        "Provider Name": r"(?:Provider|Physician):?\s*([^/\n]+)",
+        # "Provider Name": r"(?:Provider|Physician):?\s*([^/\n]+)",
         "Provider NPI": r"(?:NPI|Provider NPI|NPI#|NPI Number):?\s*(\d{10})",
         "Provider Specialty": r"NPI\s*\d{10}\s*([A-Za-z\s]+?)\s*\d{2}[A-Z0-9]",
         "State License": r"(?:License|State License):?\s*([A-Za-z0-9]+)",
@@ -143,31 +143,6 @@ def extract_information_v2(text: str) -> dict:
                         data["PPG ID"].append(ppg_match.group(1).strip())
                         break
 
-    # Final check: ensure all required keys exist, if not, set to NOT_FOUND
-    all_keys = [
-        "Transaction Type",
-        "Transaction Attribute",
-        "Effective Date",
-        "Term Date",
-        "Term Reason",
-        "Provider Name",
-        "Provider NPI",
-        "Provider Specialty",
-        "State License",
-        "Organization Name",
-        "TIN",
-        "Group NPI",
-        "Complete Address",
-        "Phone Number",
-        "Fax Number",
-        "PPG ID",
-        "Line Of Business",
-    ]
-
-    for key in all_keys:
-        if key not in data or not data[key]:
-            data[key] = NOT_FOUND
-
     return data
 
 
@@ -186,7 +161,7 @@ if __name__ == "__main__":
     print("--- Cleaned Text Fed to Extractor ---")
     print(clean_text)
 
-    extracted_data = extract_information_v2(clean_text)
+    extracted_data = extract_information(clean_text)
 
     print("\n--- Extracted Data ---")
     print(json.dumps(extracted_data, indent=2))
