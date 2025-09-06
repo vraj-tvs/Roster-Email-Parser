@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+.env
+venv/
+env/
+*.egg-info/
+dist/
+build/
+*.log
+
+# VS Code
+.vscode/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# EML files and data
+*.eml
+*.json
+
+# SpaCy model cache
+.spacy/
+
+# Test output
+*.coverage
+htmlcov/
+coverage.xml
+
+# Output files
+data/output/
+
+# Misc
+*.bak
