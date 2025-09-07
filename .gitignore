@@ -37,6 +37,7 @@ coverage.xml
 
 # Output files
 data/output/
+data/logs/
 
 # Misc
 *.bak

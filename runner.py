@@ -4,12 +4,12 @@ import os
 import time
 
 # Import the primary function from each of our modules
-from parser import parse_eml
-from preprocessor import preprocess_text
-from extractor import extract_information
-from normalizer import normalize_data
-from excel_generator import generate_excel
-from logger import init_logger
+from src.parser import parse_eml
+from src.preprocessor import preprocess_text
+from src.extractor import extract_information
+from src.normalizer import normalize_data
+from src.excel_generator import generate_excel
+from utils.logger import init_logger
 
 OUTPUT_DIR = "data/output"
 
