@@ -34,7 +34,7 @@ def generate_excel(records: List[Dict[str, Any]], output_path: str):
             record["Line Of Business (Medicare/Commercial/Medical)"] = record.pop(
                 "Line Of Business"
             )
-        elif "Transaction Type" in record:
+        if "Transaction Type" in record:
             record["Transaction Type (Add/Update/Term)"] = record.pop(
                 "Transaction Type"
             )

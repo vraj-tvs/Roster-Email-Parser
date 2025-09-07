@@ -54,8 +54,11 @@ def process_file(input_file, logger):
     # )
 
     # --- Module 4: Normalize Data ---
-    normalized_records = normalize_data(extracted_records[0])
-    logger.info("Module 4: Normalization complete.")
+    normalized_records = []
+    for record in extracted_records:
+        normalized_record = normalize_data(record)
+        normalized_records.append(normalized_record)
+    logger.info(f"Module 4: Normalization complete. {len(normalized_records)} records processed.")
     # Uncomment the following line to log normalized data
     # logger.info(
     #     "--- Final Normalized Data ---\n" + json.dumps(normalized_records, indent=2)
@@ -67,7 +70,7 @@ def process_file(input_file, logger):
     output_file = os.path.join(
         OUTPUT_DIR, f"{os.path.splitext(os.path.basename(input_file))[0]}.xlsx"
     )
-    generate_excel([normalized_records], output_file)
+    generate_excel(normalized_records, output_file)
     logger.info("Module 5: .xlsx creation complete.")
     logger.info(f"Pipeline finished successfully for {input_file}!\n")
 
