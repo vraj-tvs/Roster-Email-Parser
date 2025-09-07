@@ -1,0 +1,93 @@
+Received: from CH3PR15MB6394.namprd15.prod.outlook.com (2603:10b6:610:1b6::15)
+ by PH3PPF362B23CA1.namprd15.prod.outlook.com with HTTPS; Thu, 5 Sep 2025
+ 14:15:22 +0000
+Received: from PH3PPF362B23CA1.namprd15.prod.outlook.com
+ (2603:10b6:518:1::494) by CH3PR15MB6394.namprd15.prod.outlook.com
+ (2603:10b6:610:1b6::15) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.21; Thu, 5 Sep
+ 2025 14:15:20 +0000
+From: Prajay Sapkale <prajay.sapkale@hilabs.com>
+To: Prajay Sapkale <prajay.sapkale@hilabs.com>
+Subject: Sample-4 - Provider Addition
+Thread-Topic: Sample-4
+Thread-Index: AdwbSbRXRuKGuaXJTYGlGF4vsA5kSw==
+Date: Thu, 5 Sep 2025 14:15:20 +0000
+Message-ID:
+	<PH3PPF362B23CA1631FB60B4F6DC354D15DF607A@PH3PPF362B23CA1.namprd15.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+Content-Type: multipart/alternative;
+	boundary="_000_PH3PPF362B23CA1631FB60B4F6DC354D15DF607APH3PPF362B23CA1_"
+MIME-Version: 1.0
+
+--_000_PH3PPF362B23CA1631FB60B4F6DC354D15DF607APH3PPF362B23CA1_
+Content-Type: text/plain; charset="us-ascii"
+
+Dear Network Team,
+
+Please ADD the following provider to your network roster effective 10/1/2025.
+
+Provider Information:
+Provider Name: Dr. Sarah Johnson
+NPI: 1234567890
+License: MD12345
+Specialty: Family Medicine
+Practice Address: 123 Medical Center Dr, San Diego, CA 92101
+Phone: (619) 555-0123
+Fax: (619) 555-0124
+
+Organization Details:
+Medical Group: Pacific Health Partners (TIN # 12-3456789)
+Group NPI: 9876543210
+
+Network Participation:
+Line of Business: Medicare Advantage, Commercial PPO
+Network(s): PPG#'s / Medicare Advantage
+  - Pacific Health Partners - PHPMain
+Network(s): PPG#'s / Commercial PPO  
+  - Pacific Health Partners - PHPComm
+
+Effective Date: 10/1/2025
+
+Best Regards,
+Prajay Sapkale
+
+--_000_PH3PPF362B23CA1631FB60B4F6DC354D15DF607APH3PPF362B23CA1_
+Content-Type: text/html; charset="us-ascii"
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+</head>
+<body>
+<p>Dear Network Team,</p>
+<p>Please <b>ADD</b> the following provider to your network roster effective <b>10/1/2025</b>.</p>
+
+<p><b>Provider Information:</b><br>
+Provider Name: <b>Dr. Sarah Johnson</b><br>
+NPI: <b>1234567890</b><br>
+License: <b>MD12345</b><br>
+Specialty: <b>Family Medicine</b><br>
+Practice Address: <b>123 Medical Center Dr, San Diego, CA 92101</b><br>
+Phone: <b>(619) 555-0123</b><br>
+Fax: <b>(619) 555-0124</b></p>
+
+<p><b>Organization Details:</b><br>
+Medical Group: <b>Pacific Health Partners</b> (TIN # <b>12-3456789</b>)<br>
+Group NPI: <b>9876543210</b></p>
+
+<p><b>Network Participation:</b><br>
+Line of Business: <b>Medicare Advantage, Commercial PPO</b><br>
+Network(s): PPG#'s / Medicare Advantage<br>
+&nbsp;&nbsp;- Pacific Health Partners - PHPMain<br>
+Network(s): PPG#'s / Commercial PPO<br>
+&nbsp;&nbsp;- Pacific Health Partners - PHPComm</p>
+
+<p>Effective Date: <b>10/1/2025</b></p>
+
+<p>Best Regards,<br>
+Prajay Sapkale</p>
+</body>
+</html>
+
+--_000_PH3PPF362B23CA1631FB60B4F6DC354D15DF607APH3PPF362B23CA1_--

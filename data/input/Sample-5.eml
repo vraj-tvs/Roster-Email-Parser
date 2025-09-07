@@ -1,0 +1,36 @@
+Received: from mail.hilabs.com (10.0.0.15)
+ by exchange.hilabs.com with SMTP; Fri, 6 Sep 2025
+ 09:30:45 +0000
+From: Network Admin <admin@hilabs.com>
+To: Provider Relations <providers@hilabs.com>
+Subject: Sample-5 - Specialty Update
+Date: Fri, 6 Sep 2025 09:30:45 +0000
+Message-ID: <20250906093045.123456@hilabs.com>
+Content-Type: text/plain; charset="utf-8"
+
+Provider Roster Update Notification
+
+This email serves to notify of a specialty change for an existing provider.
+
+Provider: Dr. Michael Chen, MD
+NPI: 1987654321
+License: CA98765
+Current Specialty: Internal Medicine
+NEW Specialty: Cardiology 207RC0000X
+Effective Date: 11/15/2025
+
+Medical Group: Coastal Medical Associates with TIN # 98-7654321
+Address: 456 Harbor View Blvd, Suite 200, La Jolla, CA 92037
+Phone Number: (858) 555-9876
+Fax Number: (858) 555-9877
+
+Network Information:
+Line of business: Commercial HMO/PPO, Medicare
+PPG Assignments:
+- Coastal Medical Associates - CMA001
+- Coastal Medical Associates - CMA002
+
+Please update your records accordingly.
+
+Thank you,
+Network Administration Team

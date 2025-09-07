@@ -1,0 +1,42 @@
+Received: from secure.hilabs.com (192.168.1.100)
+ by mail.hilabs.com with TLS; Tue, 9 Sep 2025
+ 11:45:30 +0000
+From: System Administrator <sysadmin@hilabs.com>
+To: Data Processing <dataproc@hilabs.com>
+Subject: Sample-7 - Phone Update
+Date: Tue, 9 Sep 2025 11:45:30 +0000
+Message-ID: <sys-20250909114530@hilabs.com>
+Content-Type: text/plain; charset="utf-8"
+
+Provider Contact Information Update
+
+The following provider has updated their contact information:
+
+Provider: Amanda Rodriguez, NP
+NPI: 4455667788
+State License: NV11223
+Provider Specialty: Nurse Practitioner
+Organization Name: Desert Valley Health Center
+TIN: 33-2211445
+Group NPI: 3322114455
+
+UPDATED CONTACT INFORMATION:
+Previous Phone Number: (702) 555-1111
+NEW Phone Number: (702) 555-2222
+Previous Fax Number: (702) 555-1112  
+NEW Fax Number: (702) 555-2223
+
+Complete Address: 789 Desert Springs Pkwy, Las Vegas, NV 89123
+
+Effective Date: 9/15/2025
+
+Network Details:
+Line Of Business: Medicare/Medicaid
+Network(s): PPG#'s / Medicare
+- Desert Valley Health Center - DVHC500
+Network(s): PPG#'s / Medicaid
+- Desert Valley Health Center - DVHC600
+
+Please update provider directory and contact databases.
+
+System Administrator

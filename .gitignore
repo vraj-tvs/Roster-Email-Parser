@@ -23,8 +23,9 @@ build/
 .DS_Store
 Thumbs.db
 
-# EML files and data
+# EML files and data (except sample inputs)
 *.eml
+!data/input/*.eml
 *.json
 
 # SpaCy model cache

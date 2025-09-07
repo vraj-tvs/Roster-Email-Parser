@@ -1,0 +1,67 @@
+Received: from exchange01.hilabs.com (172.16.0.50)
+ by mail.hilabs.com with SMTP; Wed, 10 Sep 2025
+ 14:20:15 +0000
+From: Credentialing Team <creds@hilabs.com>
+To: Network Management <netmgmt@hilabs.com>
+Subject: Sample-8 - Complex Provider Add with Multiple Locations
+Date: Wed, 10 Sep 2025 14:20:15 +0000
+Message-ID: <creds-20250910142015@hilabs.com>
+Content-Type: text/html; charset="utf-8"
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Complex Provider Addition</title>
+</head>
+<body>
+
+<h2>Provider Network Addition - Multi-Location Practice</h2>
+
+<p>Please <strong>ADD</strong> the following provider with multiple practice locations:</p>
+
+<h3>Provider Information:</h3>
+<p><strong>Provider Name:</strong> Dr. Thomas Wilson, MD<br>
+<strong>NPI:</strong> 6677889900<br>
+<strong>State License:</strong> AZ77889<br>
+<strong>Provider Specialty:</strong> Dermatology 207N00000X</p>
+
+<h3>Organization:</h3>
+<p><strong>Organization Name:</strong> Southwest Dermatology Associates<br>
+<strong>TIN:</strong> 77-8899001<br>
+<strong>Group NPI:</strong> 7788990011</p>
+
+<h3>Practice Locations:</h3>
+
+<h4>Primary Location:</h4>
+<p><strong>Complete Address:</strong> 100 Medical Plaza, Suite 350, Phoenix, AZ 85016<br>
+<strong>Phone Number:</strong> (602) 555-7890<br>
+<strong>Fax Number:</strong> (602) 555-7891</p>
+
+<h4>Secondary Location:</h4>
+<p><strong>Address:</strong> 200 Health Center Blvd, Scottsdale, AZ 85260<br>
+<strong>Phone:</strong> (480) 555-6789<br>
+<strong>Fax:</strong> (480) 555-6790</p>
+
+<h3>Network Information:</h3>
+<p><strong>Effective Date:</strong> 11/1/2025</p>
+
+<p><strong>Line of business:</strong> Commercial HMO, Commercial PPO, Medicare Advantage</p>
+
+<p><strong>Network(s): PPG#&#8217;s / Commercial HMO</strong><br>
+&bull; Southwest Dermatology Associates &#8211; SDA300<br>
+&bull; Southwest Dermatology Associates &#8211; SDA301</p>
+
+<p><strong>Network(s): PPG#&#8217;s / Commercial PPO</strong><br>
+&bull; Southwest Dermatology Associates &#8211; SDA400<br>
+&bull; Southwest Dermatology Associates &#8211; SDA401</p>
+
+<p><strong>Network(s): PPG#&#8217;s / Medicare Advantage</strong><br>
+&bull; Southwest Dermatology Associates &#8211; SDA500</p>
+
+<p>Please ensure all locations are properly configured in the provider directory.</p>
+
+<p><strong>Contact for questions:</strong> Credentialing Team (602) 555-0100</p>
+
+</body>
+</html>

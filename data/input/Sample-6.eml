@@ -1,0 +1,110 @@
+Received: from outlook.office365.com (40.107.22.47)
+ by mail.hilabs.com with HTTPS; Mon, 8 Sep 2025
+ 16:22:10 +0000
+From: HR Department <hr@hilabs.com>
+To: Network Operations <netops@hilabs.com>
+Subject: Sample-6 - Multiple Provider Termination
+Date: Mon, 8 Sep 2025 16:22:10 +0000
+Message-ID: <hr-20250908162210@hilabs.com>
+Content-Type: multipart/alternative;
+	boundary="_multipart_boundary_sample6"
+MIME-Version: 1.0
+
+--_multipart_boundary_sample6
+Content-Type: text/plain; charset="utf-8"
+
+URGENT: Multiple Provider Terminations
+
+Effective immediately (9/8/2025), please TERMINATE the following providers from all networks:
+
+| Provider Name         | NPI        | License | Specialty                 | Term Reason    |
+|-----------------------|------------|---------|---------------------------|----------------|
+| Dr. Jennifer Martinez | 1122334455 | TX56789 | Emergency Medicine        | Voluntary      |
+| Dr. Robert Kim        | 2233445566 | CA45678 | Orthopedic Surgery        | Practice Closure |
+| Dr. Lisa Thompson     | 3344556677 | FL34567 | Pediatrics                | Retirement     |
+
+Organization: Metropolitan Medical Group (TIN # 55-4433221)
+Group NPI: 5544332211
+
+Networks Affected:
+Network(s): PPG#'s / Medicare
+- Metropolitan Medical Group - MMG100
+- Metropolitan Medical Group - MMG101
+- Metropolitan Medical Group - MMG102
+
+Network(s): PPG#'s / Commercial
+- Metropolitan Medical Group - MMG200
+- Metropolitan Medical Group - MMG201
+
+Line of business: Medicare/Commercial/Medicaid
+
+Please process these terminations immediately.
+
+Contact: HR Department (555) 123-4567
+
+--_multipart_boundary_sample6
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Multiple Provider Termination</title>
+</head>
+<body>
+<h2>URGENT: Multiple Provider Terminations</h2>
+
+<p>Effective immediately (<b>9/8/2025</b>), please <b>TERMINATE</b> the following providers from all networks:</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+<th>Provider Name</th>
+<th>NPI</th>
+<th>License</th>
+<th>Specialty</th>
+<th>Term Reason</th>
+</tr>
+<tr>
+<td>Dr. Jennifer Martinez</td>
+<td>1122334455</td>
+<td>TX56789</td>
+<td>Emergency Medicine</td>
+<td>Voluntary</td>
+</tr>
+<tr>
+<td>Dr. Robert Kim</td>
+<td>2233445566</td>
+<td>CA45678</td>
+<td>Orthopedic Surgery</td>
+<td>Practice Closure</td>
+</tr>
+<tr>
+<td>Dr. Lisa Thompson</td>
+<td>3344556677</td>
+<td>FL34567</td>
+<td>Pediatrics</td>
+<td>Retirement</td>
+</tr>
+</table>
+
+<p><b>Organization:</b> Metropolitan Medical Group (TIN # <b>55-4433221</b>)<br>
+<b>Group NPI:</b> 5544332211</p>
+
+<p><b>Networks Affected:</b><br>
+Network(s): PPG#'s / Medicare<br>
+- Metropolitan Medical Group - MMG100<br>
+- Metropolitan Medical Group - MMG101<br>
+- Metropolitan Medical Group - MMG102</p>
+
+<p>Network(s): PPG#'s / Commercial<br>
+- Metropolitan Medical Group - MMG200<br>
+- Metropolitan Medical Group - MMG201</p>
+
+<p><b>Line of business:</b> Medicare/Commercial/Medicaid</p>
+
+<p>Please process these terminations immediately.</p>
+
+<p><b>Contact:</b> HR Department (555) 123-4567</p>
+</body>
+</html>
+
+--_multipart_boundary_sample6--
