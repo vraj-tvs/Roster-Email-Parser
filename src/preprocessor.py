@@ -1,6 +1,6 @@
 import argparse
 import re
-from src.parser import parse_eml  # Assuming module_1_parser.py is in the same directory
+# from parser import parse_eml  # Assuming module_1_parser.py is in the same directory
 
 
 def preprocess_text(raw_text: str) -> str:
@@ -45,35 +45,35 @@ def preprocess_text(raw_text: str) -> str:
 
 
 # For independent testing only
-if __name__ == "__main__":
-    # Set up the command-line argument parser to test this module
-    parser = argparse.ArgumentParser(
-        description="Module 2: Text Preprocessor for HiLabs Hackathon."
-    )
-    parser.add_argument(
-        "--email_file",
-        type=str,
-        help="The path to the input .eml file to be parsed and preprocessed.",
-    )
+# if __name__ == "__main__":
+#     # Set up the command-line argument parser to test this module
+#     parser = argparse.ArgumentParser(
+#         description="Module 2: Text Preprocessor for HiLabs Hackathon."
+#     )
+#     parser.add_argument(
+#         "--email_file",
+#         type=str,
+#         help="The path to the input .eml file to be parsed and preprocessed.",
+#     )
 
-    args = parser.parse_args()
+#     args = parser.parse_args()
 
-    # --- Pipeline Demonstration ---
-    # Step 1: Call Module 1 to get the raw text
-    print(f"--- Running Module 1: Parsing {args.email_file} ---")
-    raw_email_text = parse_eml(args.email_file)
+#     # --- Pipeline Demonstration ---
+#     # Step 1: Call Module 1 to get the raw text
+#     print(f"--- Running Module 1: Parsing {args.email_file} ---")
+#     raw_email_text = parse_eml(args.email_file)
 
-    print("\n--- Raw Text (Before Preprocessing) ---")
-    print(raw_email_text)
+#     print("\n--- Raw Text (Before Preprocessing) ---")
+#     print(raw_email_text)
 
-    # Step 2: Call Module 2 to preprocess the raw text
-    print("\n--- Running Module 2: Preprocessing Text ---")
-    clean_text = preprocess_text(raw_email_text)
+#     # Step 2: Call Module 2 to preprocess the raw text
+#     print("\n--- Running Module 2: Preprocessing Text ---")
+#     clean_text = preprocess_text(raw_email_text)
 
-    # Print the final preprocessed text
-    print("\n--- Cleaned Text (After Preprocessing) ---")
-    if clean_text:
-        print(clean_text)
-    else:
-        print("No text was produced after cleaning.")
-    print("\n--- End of a process ---")
+#     # Print the final preprocessed text
+#     print("\n--- Cleaned Text (After Preprocessing) ---")
+#     if clean_text:
+#         print(clean_text)
+#     else:
+#         print("No text was produced after cleaning.")
+#     print("\n--- End of a process ---")

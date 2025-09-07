@@ -2,10 +2,10 @@ import argparse
 import re
 import spacy
 import json
+from typing import Dict, List, Any
 
-# Import functions from previous modules
-from src.parser import parse_eml
-from src.preprocessor import preprocess_text
+# from parser import parse_eml
+# from preprocessor import preprocess_text
 
 NOT_FOUND = "Information not found"
 
@@ -20,7 +20,33 @@ except OSError:
     )
 
 
-def extract_information(text: str) -> dict:
+def extract_table_data(table_lines: List[str]) -> List[Dict[str, str]]:
+    """
+    Parses a list of pipe-delimited strings into a list of dictionaries.
+    """
+    if not table_lines:
+        return []
+
+    # Extract headers from the first line, stripping whitespace and filtering empty strings
+    header = [h.strip() for h in table_lines[0].split("|") if h.strip()]
+
+    records = []
+    # Process the data rows (all lines after the header)
+    for line in table_lines[1:]:
+        if "---" in line:  # Skip separator lines
+            continue
+
+        values = [v.strip() for v in line.split("|") if v.strip()]
+
+        if len(values) == len(header):
+            # Zip the headers and values together to create a dictionary for the row
+            record = dict(zip(header, values))
+            records.append(record)
+
+    return records
+
+
+def extract_text_data(text: str) -> dict:
     """
     Extracts provider information using an improved hybrid and rule-based approach.
 
@@ -30,8 +56,6 @@ def extract_information(text: str) -> dict:
     Returns:
         A dictionary containing the extracted raw information.
     """
-    # Standard string for missing information, as requested
-    NOT_FOUND = "Information not found"
 
     # Initialize dictionary to hold extracted data
     data = {}
@@ -45,7 +69,7 @@ def extract_information(text: str) -> dict:
         "Provider NPI": r"(?:NPI|Provider NPI|NPI#|NPI Number):?\s*(\d{10})",
         "Provider Specialty": r"NPI:\s*\d{10}\s*([A-Za-z\s]+?)\s*\d{2}[A-Z0-9]",
         "State License": r"(?:License|State License):?\s*([A-Za-z0-9]+)",
-        "TIN": r"(?:Tax ID|TIN|Taxation Id|Tax ID Number):?\s*([\d-]+)",
+        "TIN": r"(?:Tax ID|TIN|Taxation Id|Tax ID Number)\s*#?:?\s*([\d-]+)",
         "Group NPI": r"(?:Group NPI|Organization NPI|Org NPI):?\s*(\d{10})",
         "Complete Address": r"(?:Address|Location|Practice Address):?\s*([^\n]+)",
         "Phone Number": r"(?:Phone|Tel|Contact|Phone Number):?\s*((?:\+?\d{1,3}[\s.-]?)?(?:\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4})",
@@ -130,9 +154,8 @@ def extract_information(text: str) -> dict:
     text_lines = text.split("\n")
 
     for block in network_blocks:
-        lob_match = re.search(r"PPG#\'s\s*/\s*(.*)", block.group(1))
-        if lob_match:
-            lob = lob_match.group(1).strip()
+        if block:
+            lob = block.group(1).strip()
             if "commercial" in lob.lower():
                 data["Line Of Business"].append("Commercial")
             elif "medicaid" in lob.lower() or "medical" in lob.lower():
@@ -140,38 +163,77 @@ def extract_information(text: str) -> dict:
             elif "medicare" in lob.lower():
                 data["Line Of Business"].append("Medicare")
             # data["Line Of Business"].append(lob)
-            block_start_line = text.count("\n", 0, block.start())
-            for i in range(
-                block_start_line + 1, min(block_start_line + 4, len(text_lines))
-            ):
-                line = text_lines[i]
-                if data.get("Organization Name", "Mercian Medical Group") in line:
-                    ppg_match = re.search(r"(\w+)$", line)
-                    if ppg_match:
-                        data["PPG ID"].append(ppg_match.group(1).strip())
-                        break
+
+        block_start_line = text.count("\n", 0, block.start())
+        for i in range(
+            block_start_line + 1, min(block_start_line + 4, len(text_lines))
+        ):
+            line = text_lines[i]
+            if "Group" in line or "PPG#" in line:
+                ppg_match = re.search(r"(\S+)$", line)
+                if ppg_match:
+                    data["PPG ID"].append(ppg_match.group(1).strip())
+                    break
 
     return data
 
 
+def extract_information(text: str) -> List[Dict[str, Any]]:
+    """
+    Main dispatcher function. Segregates text, parses zones, and merges results.
+    """
+    table_lines = []
+    free_text_lines = []
+
+    # 1. Segregate the text into table zones and free-text zones
+    for line in text.split("\n"):
+        if line.strip().startswith("|"):
+            table_lines.append(line)
+        else:
+            free_text_lines.append(line)
+
+    non_tabular_text = "\n".join(free_text_lines)
+
+    # 2. Parse the free-text zone to get "global" data
+    global_data = extract_text_data(non_tabular_text)
+
+    # 3. Parse the table zone to get record-specific data
+    table_records = extract_table_data(table_lines)
+
+    if not table_records:
+        # If no table was found, the global data is the only record
+        return [global_data] if global_data else []
+
+    # 4. Merge global data into each record from the table
+    final_records = []
+    for record in table_records:
+        # Start with a copy of the global data
+        merged_record = global_data.copy()
+        # Update/overwrite with the more specific data from the table row
+        merged_record.update(record)
+        final_records.append(merged_record)
+
+    return final_records
+
+
 # For independent testing only
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Module 3: Advanced Information Extractor."
-    )
-    parser.add_argument(
-        "--email_file", type=str, help="The path to the input .eml file."
-    )
-    args = parser.parse_args()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(
+#         description="Module 3: Advanced Information Extractor."
+#     )
+#     parser.add_argument(
+#         "--email_file", type=str, help="The path to the input .eml file."
+#     )
+#     args = parser.parse_args()
 
-    # --- Full Pipeline Demonstration ---
-    raw_text = parse_eml(args.email_file)
-    clean_text = preprocess_text(raw_text)
-    print("--- Cleaned Text Fed to Extractor ---")
-    print(clean_text)
+#     # --- Full Pipeline Demonstration ---
+#     raw_text = parse_eml(args.email_file)
+#     clean_text = preprocess_text(raw_text)
+#     print("--- Cleaned Text Fed to Extractor ---")
+#     print(clean_text)
 
-    extracted_data = extract_information(clean_text)
+#     extracted_data = extract_information(clean_text)
 
-    print("\n--- Extracted Data ---")
-    print(json.dumps(extracted_data, indent=2))
-    print("\n--- End of a process ---")
+#     print("\n--- Extracted Data ---")
+#     print(json.dumps(extracted_data, indent=2))
+#     print("\n--- End of a process ---")

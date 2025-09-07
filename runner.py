@@ -38,16 +38,14 @@ def process_file(input_file, logger):
     if not extracted_records:
         logger.error("No records were extracted from the email. Skipping.")
         return None, None
-    logger.info(
-        f"Module 3: Extraction complete. Found {len(extracted_records)} record(s)."
-    )
+    logger.info(f"Module 3: Extraction complete.")
     # Uncomment the following line to log raw extracted data
     # logger.info(
     #     "--- Raw Extracted Data ---\n" + json.dumps(extracted_records, indent=2)
     # )
 
     # --- Module 4: Normalize Data ---
-    normalized_records = normalize_data(extracted_records)
+    normalized_records = normalize_data(extracted_records[0])
     logger.info("Module 4: Normalization complete.")
     # Uncomment the following line to log normalized data
     # logger.info(
