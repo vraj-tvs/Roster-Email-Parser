@@ -65,9 +65,17 @@ def extract_information(text: str) -> dict:
     if "Provider Name" not in data or "Organization Name" not in data:
         doc = nlp(text)
         for ent in doc.ents:
-            if "Provider Name" not in data and ent.label_ == "PERSON" and "Provider Name" not in data:
+            if (
+                "Provider Name" not in data
+                and ent.label_ == "PERSON"
+                and "Provider Name" not in data
+            ):
                 data["Provider Name"] = ent.text
-            elif "Organization Name" not in data and ent.label_ == "ORG" and "Organization Name" not in data:
+            elif (
+                "Organization Name" not in data
+                and ent.label_ == "ORG"
+                and "Organization Name" not in data
+            ):
                 if "Medical Group" in ent.text:
                     data["Organization Name"] = ent.text
 
@@ -146,6 +154,7 @@ def extract_information(text: str) -> dict:
     return data
 
 
+# For independent testing only
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Module 3: Advanced Information Extractor."

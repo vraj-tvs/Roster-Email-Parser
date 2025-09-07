@@ -7,6 +7,7 @@ from extractor import extract_information
 from preprocessor import preprocess_text
 from parser import parse_eml
 
+
 def _normalize_numeric_id(value: Any) -> str:
     """Strips non-numeric characters."""
     if isinstance(value, str):
@@ -67,9 +68,13 @@ def normalize_data(raw_data: Dict[str, Any]) -> Dict[str, str]:
             normalized_record[key] = NOT_FOUND
 
     if "Line Of Business" in normalized_record:
-        normalized_record["Line Of Business (Medicare/Commercial/Medical)"] = normalized_record.pop("Line Of Business")
+        normalized_record["Line Of Business (Medicare/Commercial/Medical)"] = (
+            normalized_record.pop("Line Of Business")
+        )
     if "Transaction Type" in normalized_record:
-        normalized_record["Transaction Type (Add/Update/Term)"] = normalized_record.pop("Transaction Type")
+        normalized_record["Transaction Type (Add/Update/Term)"] = normalized_record.pop(
+            "Transaction Type"
+        )
 
     # Desired key order
     ordered_keys = [
@@ -93,7 +98,9 @@ def normalize_data(raw_data: Dict[str, Any]) -> Dict[str, str]:
     ]
 
     # Build ordered dict
-    ordered_record = {key: normalized_record.get(key, NOT_FOUND) for key in ordered_keys}
+    ordered_record = {
+        key: normalized_record.get(key, NOT_FOUND) for key in ordered_keys
+    }
 
     return ordered_record
 
@@ -101,9 +108,7 @@ def normalize_data(raw_data: Dict[str, Any]) -> Dict[str, str]:
 if __name__ == "__main__":
     # This section demonstrates the module's effect
     # Set up the command-line argument parser to test this module
-    parser = argparse.ArgumentParser(
-        description="Module 4: Data Normalizer."
-    )
+    parser = argparse.ArgumentParser(description="Module 4: Data Normalizer.")
     parser.add_argument(
         "--email_file",
         type=str,
