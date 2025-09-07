@@ -1,22 +1,12 @@
 import argparse
 import re
+
 # from parser import parse_eml  # Assuming module_1_parser.py is in the same directory
 
 
 def preprocess_text(raw_text: str) -> str:
     """
     Cleans and standardizes the raw text extracted from an email.
-
-    This function performs several preprocessing steps:
-    1. Replaces special characters and artifacts (like asterisks).
-    2. Normalizes whitespace by collapsing multiple spaces/tabs into a single space.
-    3. Removes empty or blank lines to create a compact text block.
-
-    Args:
-        raw_text: The raw string content from the email body.
-
-    Returns:
-        A cleaned and standardized string, ready for information extraction.
     """
     if not raw_text:
         return ""

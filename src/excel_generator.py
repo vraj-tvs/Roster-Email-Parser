@@ -15,11 +15,6 @@ OUTPUT_DIR = "data/output"
 def generate_excel(records: List[Dict[str, Any]], output_path: str):
     """
     Generates an Excel file from a list of normalized data records.
-
-    Args:
-        records: A list of dictionaries, where each dictionary is a
-                 fully normalized provider record.
-        output_path: The path to save the final .xlsx file.
     """
     if not records:
         print("⚠️ Warning: No data records to write to Excel.")
