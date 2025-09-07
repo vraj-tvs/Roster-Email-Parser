@@ -1,5 +1,11 @@
 # Roster Email Parser
 
+**Team Members:**
+
+- Anvit Gupta (anvit_g@cs.iitr.ac.in)
+- Raman Sharma (raman_s@cs.iitr.ac.in)
+- Tamakuwala Vraj Shailesh (tamakuwala_vs@cs.iitr.ac.in)
+
 **Repository:** [https://github.com/vraj-tvs/Roster-Email-Parser](https://github.com/vraj-tvs/Roster-Email-Parser)
 
 ---
@@ -75,9 +81,11 @@ This project leverages the **spaCy** transformer-based pretrained model, `en_cor
 - **Scalability:** Enables automated extraction across large volumes of emails with minimal errors.
 
 **Note:** To use this model, ensure you have run:
+
 ```
 python -m spacy download en_core_web_trf
 ```
+
 or installed via `requirements.txt`.
 
 ---
@@ -87,22 +95,49 @@ or installed via `requirements.txt`.
 1. **Create and Initialize virtual environment (Optional)**
 
    ```
+   # On Windows
    python -m venv myenv
-   myenv\Scripts\activate  # On Windows
-   source myenv/bin/activate  # On Linux
+   myenv\Scripts\activate
+
+   # On Linux/macOS
+   python3 -m venv myenv
+   source myenv/bin/activate
    ```
 
 2. **Install Dependencies**
 
    ```
+   # On Windows
    pip install -r requirements.txt
-   python -m spacy download en_core_web_trf  # if not installed from `requirements.txt`
+
+   # On Linux/macOS
+   python3 -m pip install -r requirements.txt
    ```
 
-   _NOTE:_ if you have multiple Python versions installed, then use:
+   This will install all required packages, including:
+
+   - `spacy`, `en-core-web-trf` (NLP)
+   - `openpyxl`, `pandas`, `numpy`, `tqdm`, `python-dateutil`
+   - `beautifulsoup4` and `lxml` (for email and HTML parsing)
+
+   _NOTE:_ If you have multiple Python versions installed, use:
 
    ```
+   # On Windows
    python -m pip install -r requirements.txt
+
+   # On Linux/macOS
+   python3 -m pip install -r requirements.txt
+   ```
+
+   If you see errors about missing `en_core_web_trf`, run:
+
+   ```
+   # On Windows
+   python -m spacy download en_core_web_trf
+
+   # On Linux/macOS
+   python3 -m spacy download en_core_web_trf
    ```
 
 3. **Prepare Input**
@@ -114,13 +149,21 @@ or installed via `requirements.txt`.
    - For single file:
 
    ```
+   # On Windows
    python runner.py --input_file=data/input/Sample-1.eml
+
+   # On Linux/macOS
+   python3 runner.py --input_file=data/input/Sample-1.eml
    ```
 
    - For a folder of `.eml` files:
 
    ```
+   # On Windows
    python runner.py --input_folder=data/input/
+
+   # On Linux/macOS
+   python3 runner.py --input_folder=data/input/
    ```
 
 5. **Output**

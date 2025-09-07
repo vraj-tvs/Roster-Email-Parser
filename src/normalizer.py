@@ -1,3 +1,12 @@
+"""
+This project is part of HiLabs Hackathon 2025: Free-Text Roster Emails.
+"""
+"""
+Team Members:
+    - Anvit Gupta (anvit_g@cs.iitr.ac.in)
+    - Raman Sharma (raman_s@cs.iitr.ac.in)
+    - Tamakuwala Vraj Shailesh (tamakuwala_vs@cs.iitr.ac.in)
+"""
 import argparse
 import re
 import json

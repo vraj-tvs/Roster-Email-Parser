@@ -7,3 +7,5 @@ python-dateutil>=2.8.0
 tqdm>=4.0.0
 numpy>=1.21.0
 en-core-web-trf @ https://github.com/explosion/spacy-models/releases/download/en_core_web_trf-3.7.3/en_core_web_trf-3.7.3-py3-none-any.whl
+beautifulsoup4>=4.0.0
+lxml>=4.0.0
