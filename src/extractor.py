@@ -4,8 +4,8 @@ import spacy
 import json
 
 # Import functions from previous modules
-from parser import parse_eml
-from preprocessor import preprocess_text
+from src.parser import parse_eml
+from src.preprocessor import preprocess_text
 
 NOT_FOUND = "Information not found"
 

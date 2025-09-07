@@ -36,6 +36,7 @@ htmlcov/
 coverage.xml
 
 # Output files
+*.xlsx
 data/output/
 data/logs/
 

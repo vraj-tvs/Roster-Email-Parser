@@ -3,9 +3,9 @@ import re
 import json
 from dateutil import parser as date_parser
 from typing import Dict, Any
-from extractor import extract_information
-from preprocessor import preprocess_text
-from parser import parse_eml
+from src.extractor import extract_information
+from src.preprocessor import preprocess_text
+from src.parser import parse_eml
 
 
 def _normalize_numeric_id(value: Any) -> str:
@@ -105,6 +105,7 @@ def normalize_data(raw_data: Dict[str, Any]) -> Dict[str, str]:
     return ordered_record
 
 
+# For independent testing only
 if __name__ == "__main__":
     # This section demonstrates the module's effect
     # Set up the command-line argument parser to test this module

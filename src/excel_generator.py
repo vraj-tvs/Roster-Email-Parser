@@ -3,10 +3,10 @@ import json
 import os
 import pandas as pd
 from typing import List, Dict, Any
-from parser import parse_eml
-from preprocessor import preprocess_text
-from extractor import extract_information
-from normalizer import normalize_data
+from src.parser import parse_eml
+from src.preprocessor import preprocess_text
+from src.extractor import extract_information
+from src.normalizer import normalize_data
 
 # This list defines the exact column order and case-sensitive names
 ORDERED_HEADERS = [
@@ -77,6 +77,7 @@ def generate_excel(records: List[Dict[str, Any]], output_path: str):
         print(f"\n❌ Error generating Excel file: {e}")
 
 
+# For independent testing only
 if __name__ == "__main__":
     # This section demonstrates the module's effect
     # Set up the command-line argument parser to test this module
@@ -91,7 +92,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # --- Pipeline Demonstration ---
     # Step 1: Call Module 1 to get the raw text
     print(f"--- Running Module 1: Parsing {args.email_file} ---")
     raw_email_text = parse_eml(args.email_file)

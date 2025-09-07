@@ -1,6 +1,6 @@
 import argparse
 import re
-from parser import parse_eml  # Assuming module_1_parser.py is in the same directory
+from src.parser import parse_eml  # Assuming module_1_parser.py is in the same directory
 
 
 def preprocess_text(raw_text: str) -> str:
@@ -44,6 +44,7 @@ def preprocess_text(raw_text: str) -> str:
     return "\n".join(processed_lines)
 
 
+# For independent testing only
 if __name__ == "__main__":
     # Set up the command-line argument parser to test this module
     parser = argparse.ArgumentParser(

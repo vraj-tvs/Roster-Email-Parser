@@ -3,6 +3,7 @@ import email
 from email import policy
 from email.parser import BytesParser
 
+
 def parse_eml(file_path: str) -> str:
     """
     Parses an .eml file and extracts its plain text body.
@@ -20,7 +21,7 @@ def parse_eml(file_path: str) -> str:
         file cannot be read.
     """
     try:
-        with open(file_path, 'rb') as fp:
+        with open(file_path, "rb") as fp:
             # Use BytesParser with a policy to handle modern email formats
             msg = BytesParser(policy=policy.default).parse(fp)
     except FileNotFoundError:
@@ -31,16 +32,19 @@ def parse_eml(file_path: str) -> str:
         return ""
 
     plain_text_body = ""
-    
+
     # The .walk() method iterates through all parts of the email message
     for part in msg.walk():
         # Check if the part is 'text/plain' and not an attachment
-        if part.get_content_type() == 'text/plain' and part.get('Content-Disposition') is None:
+        if (
+            part.get_content_type() == "text/plain"
+            and part.get("Content-Disposition") is None
+        ):
             # Get the payload, decode it from bytes to string
             try:
                 # The charset is often specified, get_payload will use it
                 payload = part.get_payload(decode=True)
-                charset = part.get_content_charset() or 'utf-8'
+                charset = part.get_content_charset() or "utf-8"
                 plain_text_body += payload.decode(charset)
             except (UnicodeDecodeError, AttributeError) as e:
                 print(f"Could not decode part of the email body: {e}")
@@ -51,15 +55,14 @@ def parse_eml(file_path: str) -> str:
     return plain_text_body.strip()
 
 
+# For independent testing only
 if __name__ == "__main__":
     # Set up the command-line argument parser
     parser = argparse.ArgumentParser(
         description="Module 1: Email Parser for HiLabs Hackathon."
     )
     parser.add_argument(
-        "--email_file",
-        type=str,
-        help="The path to the input .eml file to be parsed."
+        "--email_file", type=str, help="The path to the input .eml file to be parsed."
     )
 
     args = parser.parse_args()
@@ -67,7 +70,7 @@ if __name__ == "__main__":
     # Call the parsing function with the provided file path
     print(f"--- Parsing Email File: {args.email_file} ---")
     extracted_text = parse_eml(args.email_file)
-    
+
     # Print the final extracted text
     print("\n--- Extracted Plain Text Body ---")
     if extracted_text:
